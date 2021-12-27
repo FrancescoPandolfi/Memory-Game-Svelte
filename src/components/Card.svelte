@@ -31,6 +31,11 @@
   .flip-card:hover {
     transform: translate(0, -5px);
   }
+  @media (pointer:coarse) {
+    .flip-card:hover {
+      transform: none;
+    }
+  }
 
   .flip-card-inner {
     position: relative;

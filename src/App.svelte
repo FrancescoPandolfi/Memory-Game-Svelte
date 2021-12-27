@@ -67,8 +67,8 @@
       if (remainingTime === 0) {
         clearInterval(timeInterval);
         showHideModal(GAME_LOST);
-        new Audio('audio/lose.mp3').play();
-
+        const audio = new Audio('audio/lose.mp3');
+        audio.play();
       }
     }, 1000)
   }
@@ -208,7 +208,7 @@
     padding: 0 30px 30px;
   }
 
-  @media screen and (max-width: 1024px) {
+  @media (pointer:coarse) {
     main {
       height: 85vh;
     }
@@ -216,5 +216,9 @@
       height: 70vh;
     }
   }
+
+  /*@media screen and (max-width: 1024px) {*/
+
+  /*}*/
 
 </style>
