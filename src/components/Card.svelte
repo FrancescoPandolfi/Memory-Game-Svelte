@@ -31,7 +31,8 @@
   .flip-card:hover {
     transform: translate(0, -5px);
   }
-  @media (pointer:coarse) {
+
+  @media (hover: none) and (pointer: coarse) {
     .flip-card:hover {
       transform: none;
     }

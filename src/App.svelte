@@ -208,7 +208,7 @@
     padding: 0 30px 30px;
   }
 
-  @media (pointer:coarse) {
+  @media (hover: none) and (pointer: coarse) {
     main {
       height: 85vh;
     }
@@ -216,9 +216,5 @@
       height: 70vh;
     }
   }
-
-  /*@media screen and (max-width: 1024px) {*/
-
-  /*}*/
 
 </style>
