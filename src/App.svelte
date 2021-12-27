@@ -16,7 +16,7 @@
   let guessingTime;
   let remainingTime;
   let timeInterval;
-  const audio = new Audio('audio/flip-card.mp3');
+
 
   let cards = [
     {id: 1, src: 'img/bananas.svg', isShowed: true, isGuessed: false},
@@ -67,6 +67,8 @@
       if (remainingTime === 0) {
         clearInterval(timeInterval);
         showHideModal(GAME_LOST);
+        new Audio('audio/lose.mp3').play();
+
       }
     }, 1000)
   }
@@ -86,6 +88,7 @@
     cards.map(card => {
       if (card.id === id && !card.isShowed) {
         card.isShowed = true;
+        const audio = new Audio('audio/flip-card.mp3');
         audio.play();
       }
     });
@@ -113,11 +116,12 @@
           }
         })
         cards = cards;
-        // If all the cards are matched
+        // If all the cards are matched the game is won
         if (cards.every(card => card.isGuessed)) {
           clearInterval(timeInterval);
           gameState = GAME_WON;
           showHideModal(GAME_WON);
+          new Audio('audio/win.wav').play();
         }
       }, 500)
     }
