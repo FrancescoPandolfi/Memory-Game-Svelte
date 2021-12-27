@@ -7,6 +7,7 @@
   import Modal from "./components/Modal.svelte";
   import Button from "./components/Button.svelte";
 
+
   let score = 0;
   let level = 0;
   let showModal = false;
@@ -143,13 +144,14 @@
     cards = cards
     showHideModal();
     isGameStarted = false;
-    guessingTime = configGuessingTime;
+    remainingTime = guessingTime;
     shuffle(cards);
 
     if (gameState === GAME_WON) {
       goNextLevel();
     } else {
       score = 0;
+      level = 0;
     }
   }
 
@@ -202,7 +204,13 @@
     padding: 0 30px 30px;
   }
 
-  @media (min-width: 640px) {
+  @media screen and(max-width: 1024px) {
+    main {
+      height: 90vh;
+    }
+    .card-board {
+      height: 75vh;
+    }
   }
 
 </style>
