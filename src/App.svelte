@@ -3,7 +3,15 @@
   import Card from "./components/Card.svelte";
   import {onMount} from 'svelte';
   import shuffle from "./helpers/shuffle"
-  import {configGuessingTime, GAME_LOST, GAME_STANDBY, GAME_WON, memorizationTime, points} from "./config/config";
+  import {
+    configGuessingTime,
+    GAME_LOST,
+    GAME_MEMORIZATION, GAME_PLAYING,
+    GAME_STANDBY,
+    GAME_WON,
+    globalMemorizationTime,
+    points
+  } from "./config/config";
   import Modal from "./components/Modal.svelte";
   import Button from "./components/Button.svelte";
 
@@ -15,6 +23,7 @@
   let isGameStarted = false;
   let guessingTime;
   let remainingTime;
+  let memorizationTime = globalMemorizationTime;
   let timeInterval;
 
 
@@ -44,10 +53,15 @@
    * */
   const startGame = () => {
     isGameStarted = true;
-    setTimeout(() => {
-      coverAllCards();
-      startGuessing();
-    }, memorizationTime)
+    gameState = GAME_MEMORIZATION;
+    const interval = setInterval(() => {
+      memorizationTime--;
+      if (memorizationTime === 0) {
+        clearInterval(interval);
+        coverAllCards();
+        startGuessing();
+      }
+    }, 1000);
   }
 
   /**
@@ -62,6 +76,7 @@
    * Start to match cards
    * */
   const startGuessing = () => {
+    gameState = GAME_PLAYING;
     timeInterval = setInterval(() => {
       remainingTime--;
       if (remainingTime === 0) {
@@ -88,8 +103,6 @@
     cards.map(card => {
       if (card.id === id && !card.isShowed) {
         card.isShowed = true;
-        // const audio = new Audio('audio/flip-card.mp3');
-        // audio.play();
       }
     });
     cards = cards
@@ -122,6 +135,7 @@
           gameState = GAME_WON;
           showHideModal(GAME_WON);
           new Audio('audio/win.wav').play();
+          memorizationTime = globalMemorizationTime;
         }
       }, 500)
     }
@@ -156,6 +170,7 @@
     } else {
       score = 0;
       level = 0;
+      memorizationTime = globalMemorizationTime;
     }
   }
 
@@ -168,7 +183,6 @@
     remainingTime = guessingTime;
     startGame();
   }
-
 </script>
 
 
@@ -184,7 +198,6 @@
             {/each}
         {/if}
     </div>
-
     {#if showModal}
         <Modal {gameState} {reset} {score} {level} timeToSolveTheLevel="{guessingTime - remainingTime}"/>
     {/if}
@@ -212,6 +225,7 @@
     main {
       height: 85vh;
     }
+
     .card-board {
       height: 70vh;
     }

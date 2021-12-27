@@ -4,8 +4,8 @@
   export let isGameStarted = false;
   export let timeLeft;
   export let guessingTime;
-
 </script>
+
 
 <div class="header">
     {#if !isGameStarted}
@@ -14,6 +14,7 @@
         <TimeBar {timeLeft} {guessingTime} />
     {/if}
 </div>
+
 
 <style>
   .header {

@@ -1,7 +1,7 @@
 /**
- * Memorization time in milliseconds
+ * Memorization time in seconds
  * */
-export const memorizationTime = 5000;
+export const globalMemorizationTime = 5;
 
 /**
  * Guessing time in seconds
@@ -16,5 +16,6 @@ export const points = 5;
 export const GAME_WON = 'won';
 export const GAME_LOST = 'lost';
 export const GAME_STANDBY = 'standby';
+export const GAME_MEMORIZATION = 'memorization';
 export const GAME_PLAYING = 'playing';
 

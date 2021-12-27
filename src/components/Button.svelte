@@ -10,7 +10,6 @@
 
 
 <style>
-
   .container {
     width: 100%;
     text-align: center;
@@ -26,6 +25,5 @@
     border-radius: 10px;
     font-size: 18px;
   }
-
 </style>
 

@@ -28,10 +28,12 @@
     cursor: pointer;
     transition: 0.3s;
   }
+
   .flip-card:hover {
     transform: translate(0, -5px);
   }
 
+  /* On mobile */
   @media (hover: none) and (pointer: coarse) {
     .flip-card:hover {
       transform: none;
