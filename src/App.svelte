@@ -88,8 +88,8 @@
     cards.map(card => {
       if (card.id === id && !card.isShowed) {
         card.isShowed = true;
-        const audio = new Audio('audio/flip-card.mp3');
-        audio.play();
+        // const audio = new Audio('audio/flip-card.mp3');
+        // audio.play();
       }
     });
     cards = cards
