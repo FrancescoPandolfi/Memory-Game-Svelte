@@ -206,10 +206,10 @@
 
   @media screen and (max-width: 1024px) {
     main {
-      height: 90vh;
+      height: 85vh;
     }
     .card-board {
-      height: 75vh;
+      height: 70vh;
     }
   }
 
