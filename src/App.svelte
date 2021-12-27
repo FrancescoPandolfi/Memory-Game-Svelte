@@ -67,7 +67,7 @@
       if (remainingTime === 0) {
         clearInterval(timeInterval);
         showHideModal(GAME_LOST);
-        const audio = new Audio('audio/lose.mp3');
+        const audio = new Audio('audio/lose-sound.mp3');
         audio.play();
       }
     }, 1000)
