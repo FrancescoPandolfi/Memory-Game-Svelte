@@ -204,7 +204,7 @@
     padding: 0 30px 30px;
   }
 
-  @media screen and(max-width: 1024px) {
+  @media screen and (max-width: 1024px) {
     main {
       height: 90vh;
     }
