@@ -100,12 +100,17 @@
    * Show the clicked card
    * */
   const showClickedCard = (id) => {
-    cards.map(card => {
-      if (card.id === id && !card.isShowed) {
-        card.isShowed = true;
-      }
-    });
-    cards = cards
+    let flippedCards = cards.filter(card => card.isShowed && !card.isGuessed);
+    if (flippedCards.length <= 1) {
+      cards.map(card => {
+        if (card.id === id && !card.isShowed) {
+          card.isShowed = true;
+        }
+      });
+      cards = cards
+    }
+
+
   }
 
   /**
@@ -162,7 +167,6 @@
     cards = cards
     showHideModal();
     isGameStarted = false;
-    remainingTime = guessingTime;
     shuffle(cards);
 
     if (gameState === GAME_WON) {
@@ -171,6 +175,8 @@
       score = 0;
       level = 0;
       memorizationTime = globalMemorizationTime;
+      remainingTime = configGuessingTime;
+      guessingTime = configGuessingTime;
     }
   }
 
